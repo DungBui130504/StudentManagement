@@ -28,10 +28,9 @@
             const element = document.getElementById("div")
             for (let i = 0; i < names.length; i++) {
                 let para = document.createElement("p")
-                let node = document.createTextNode(`id : ${ids[i]} ---- name : ${names[i]} ----  age : ${ages[i]}  ---- adress : ${address[i]}`)
+                let node = document.createTextNode(`id : ${ids[i]} ---- name : ${names[i]} ----  age : ${ages[i]}  ---- address : ${address[i]}`)
                 para.appendChild(node)
                 element.appendChild(para)
-
             }
         }
         main()

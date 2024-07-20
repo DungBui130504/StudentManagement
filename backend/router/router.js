@@ -8,9 +8,11 @@ route.get('/', (req, res) => { controller.getHomePage(req, res) })
 
 
 
-route.get("/api/data", async (req, res) => { fun.getInfoStudent(req, res) })
+route.get("/data", async (req, res) => { controller.getInfoStudent(req, res) })
 
 route.get("/api", async (req, res) => { controller.disPlayData(req, res) })
+
+route.get("/table", async (req, res) => { controller.displayTable(req, res) })
 
 
 module.exports = route

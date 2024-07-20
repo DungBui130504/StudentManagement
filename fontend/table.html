@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Table</title>
+    <link rel="stylesheet" href="./style/table.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Full Name</th>
+                        <th>ID</th>
+                        <th>YOB</th>
+                        <th>Address</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body">
+
+                </tbody>
+            </table>
+        </div>
+
+        <script>
+            const main = async () => {
+                let students = await fetch("http://localhost:3000/api/get_student_data").then(response => response.json()).then((data) => { return data })
+
+                let studentData = [];
+
+                for (let i = 0; i < students.length; i++) {
+                    studentData.push(students[i]);
+                }
+
+                var tBody = document.getElementById("table-body");
+
+                for (let i = 0; i < studentData.length; i++) {
+                    var newRow = document.createElement("tr");
+                    var cellNameText = document.createElement("td");
+                    var cellIdText = document.createElement("td");
+                    var cellYOBText = document.createElement("td");
+                    var cellAddressText = document.createElement("td");
+
+                    cellNameText.appendChild(document.createTextNode(studentData[i].name));
+                    cellIdText.appendChild(document.createTextNode(studentData[i].Id));
+                    cellYOBText.appendChild(document.createTextNode(studentData[i].YOB));
+                    cellAddressText.appendChild(document.createTextNode(studentData[i].address));
+
+                    newRow.appendChild(cellNameText);
+                    newRow.appendChild(cellIdText);
+                    newRow.appendChild(cellYOBText);
+                    newRow.appendChild(cellAddressText);
+
+                    tBody.appendChild(newRow);
+                }
+            }
+
+            main()
+        </script>
+
+        <br></br>
+
+        <form action="/" method="get" class="myForm">
+            <button type="submit">BACK TO HOMEPAGE</button>
+        </form>
+    </div>
+</body>
+
+</html>
