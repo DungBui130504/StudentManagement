@@ -12,7 +12,6 @@ const getInfoStudent = async (req, res) => {
 
 }
 
-
 const disPlayData = (req, res) => {
     res.sendFile(path.resolve("../fontend/page2.html"));
 
