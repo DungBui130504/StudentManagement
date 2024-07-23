@@ -10,6 +10,6 @@ api.get("/api/get_subject_data", (req, res) => { fun.getSubjectTable(req, res) }
 
 api.get("/api/get_mark_data", (req, res) => { fun.getMarkTable(req, res) });
 
-api.get("/api/get_table_data", (req, res) => { fun.getTableData(req, res) });
+api.get("/table/get_table_data", (req, res) => { fun.getTableData(req, res) });
 
 module.exports = api;

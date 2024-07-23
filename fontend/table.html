@@ -35,7 +35,8 @@
 
         <script>
             async function sendData() {
-                let exe = await fetch('http://localhost:3000/api/get_table_data').then(response => response.json()).then(data => {
+                // console.log(await fetch('http://localhost:3000/table/get_table_data').then(response => response.json()));
+                let exe = await fetch('http://localhost:3000/table/get_table_data').then(response => response.json()).then(data => {
                     const tBody = document.getElementById("table-body");
 
                     data.forEach(row => {
@@ -61,8 +62,11 @@
         </script>
 
         <form action="/" method="get" class="myForm">
-            <button type="submit">BACK TO HOMEPAGE</button>
+            <!-- <button type="submit">BACK TO HOMEPAGE</button> -->
+            <button class="button-89" role="button">BACK TO HOMEPAGE</button>
         </form>
+
+
     </div>
 </body>
 
