@@ -4,6 +4,7 @@ const connection = require("../model/connection.js");
 const getStudentTable = async (req, res) => {
     let data = await connection.execute("select * from student").then((data) => { return data });
     res.send(data);
+    return data
 }
 
 //Lay ten sinh vien

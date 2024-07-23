@@ -20,10 +20,57 @@
         <div class="splat-toggle toggle active">SPLAT</div>
         <div class="back-row-toggle toggle active">BACK<br>ROW</div>
         <div class="single-toggle toggle">SINGLE</div>
+
     </div>
 
+
+
+    <div class="container">
+        <h1>STUDENT MANAGEMENT</h1>
+        <br><br>
+        <div class="signup-form">
+            <form action="/searching_api" method="post">
+                <p id="code0" style="height: 40px; width: 400px; color: white;"></p>
+                <label for="codename">Enter Student Name/ ID</label>
+                <label></label>
+                <input type="text" name="code_true" id="code_true" hidden>
+
+                <input type="text" name="codename" id="codename">
+                <input type="text" name="random_code" id="random_code">
+
+                <button class="btn">
+                    <span class="btn__inner">
+                        <span class="btn__slide"></span>
+                        <span class="btn__content">Searching Student</span>
+                    </span>
+                </button>
+            </form>
+        </div>
+        <div>
+
+        </div>
+
+        <div>
+            <form action="/table" method="get">
+                <button class="btn btn--light" type="submit">
+                    <span class="btn__inner">
+                        <span class="btn__slide"></span>
+                        <span class="btn__content">Show Student List</span>
+                    </span>
+                </button>
+            </form>
+        </div>
+    </div>
     <script>
         var makeItRain = function () {
+            let s = "0123456789abcdefghiklmnopxvzABCDEFGHIJKMLN"
+            let random_code = ""
+            for (let i = 0; i < 5; i++) {
+                random_code += s[Math.floor(Math.random() * 40)]
+            }
+            document.querySelector("#code0").innerHTML = `nhập mã captcha sau đây : ${random_code}`
+            document.querySelector("#code_true").value = random_code
+
             $('.rain').empty();
 
             var increment = 0;
@@ -62,37 +109,6 @@
 
         makeItRain();
     </script>
-
-    <div class="container">
-        <h1>STUDENT MANAGEMENT</h1>
-        <br><br>
-        <div class="signup-form">
-            <form action="">
-                <label for="codename">Enter Student Name/ ID</label>
-                <input type="text" name="codename" id="codename">
-            </form>
-        </div>
-        <div>
-            <button class="btn">
-                <span class="btn__inner">
-                    <span class="btn__slide"></span>
-                    <span class="btn__content">Searching Student</span>
-                </span>
-            </button>
-        </div>
-
-        <div>
-            <form action="/table" method="get">
-                <button class="btn btn--light" type="submit">
-                    <span class="btn__inner">
-                        <span class="btn__slide"></span>
-                        <span class="btn__content">Show Student List</span>
-                    </span>
-                </button>
-            </form>
-        </div>
-    </div>
-
 </body>
 
 </html>

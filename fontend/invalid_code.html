@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>invalid</title>
+</head>
+
+<body>
+
+    <script>
+        const main = async () => {
+            let message = await fetch("http://localhost:3000/invalid_message").then(response => response.text()).then(data => { return data }).catch((e) => { return e })
+            alert(message)
+            window.location.href = 'http://localhost:3000/'; // Thay đổi URL theo ý muốn
+
+        }
+        main()
+    </script>
+</body>
+
+</html>
