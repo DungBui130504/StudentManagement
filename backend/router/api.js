@@ -36,8 +36,6 @@ api.post("/searching_api", async (req, res) => {
         res.sendFile(path.resolve("../fontend/invalid_code.html"))
         return
     }
-
-
 })
 
 module.exports = api;

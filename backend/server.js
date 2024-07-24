@@ -1,15 +1,14 @@
 const express = require("express");
 const path = require('path');
-const bodyParser = require("body-parser")
+const bodyParser = require("body-parser");
 const connection = require('./model/connection.js');
 const routes = require('./router/router.js');
 const api = require("./router/api.js");
 const port = 3000;
 
 const app = express();
+
 app.use(bodyParser.urlencoded({ extended: true }));
-
-
 
 app.use(express.static(path.join(__dirname, '../fontend')));
 

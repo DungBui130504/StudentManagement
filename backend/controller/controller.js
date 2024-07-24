@@ -8,8 +8,7 @@ const getHomePage = (req, res) => {
 
 const getInfoStudent = async (req, res) => {
     let data = await connection.execute("select * from student").then((data) => { return data })
-    res.send(data)
-
+    res.send(data);
 }
 
 const disPlayData = (req, res) => {
