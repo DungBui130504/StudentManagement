@@ -4,7 +4,7 @@ var con = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "",
-    database: "qlsv"
+    database: "qlsv" //Sua ten csdl cho dung
 });
 
 

@@ -1,14 +1,9 @@
-const path = require("path")
-const fun = require('./function.js')
-const connection = require('../model/connection.js')
+const path = require("path");
+const fun = require('./function.js');
+const connection = require('../model/connection.js');
 
 const getHomePage = (req, res) => {
     res.sendFile(path.resolve("../fontend/page.html"));
-}
-
-const getInfoStudent = async (req, res) => {
-    let data = await connection.execute("select * from student").then((data) => { return data })
-    res.send(data);
 }
 
 const disPlayData = (req, res) => {
@@ -20,8 +15,12 @@ const displayTable = (req, res) => {
     res.sendFile(path.resolve("../fontend/table.html"));
 }
 
+const displayMark = (req, res) => {
+    res.sendFile(path.resolve("../fontend/mark.html"));
+}
+
 const controller = {
-    getInfoStudent: getInfoStudent,
+    displayMark: displayMark,
     getHomePage: getHomePage,
     disPlayData: disPlayData,
     displayTable: displayTable

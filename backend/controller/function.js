@@ -1,40 +1,19 @@
 const connection = require("../model/connection.js");
 
-//Lay toan bo thong tin sinh vien
-const getStudentTable = async (req, res) => {
-    let data = await connection.execute("select * from student").then((data) => { return data });
-    res.send(data);
-    return data
-}
-
-//Lay ten sinh vien
-const getStudentName = async (req, res) => {
-    let data = await connection.execute("select name from student").then((data) => { return data });
-    res.send(data);
-}
-
 //Lay toan bo thong tin ve diem
 const getMarkTable = async (req, res) => {
-    let data = await connection.execute("select * from mark").then((data) => { return data });
+    let data = await connection.execute("SELECT student.student_id, student.name, student.address, student.YOB, subject.subject_id, subject.subject_name, mark.tx1, mark.tx2, mark.ck FROM student JOIN mark ON student.student_id = mark.student_id JOIN subject ON mark.subject_id = subject.subject_id").then((data) => { return data });
     res.send(data);
 }
 
-//Lay toan bo thong tin ve mon hoc
-const getSubjectTable = async (req, res) => {
-    res.send(await connection.execute("select * from subject").then((data) => { return data }));
-}
-
-//Lay du lieu cho bang
+//Lay du lieu cho bang danh sach sinh vien
 const getTableData = async (req, res) => {
-    let data = await connection.execute("SELECT student.student_id, student.name, student.address, student.YOB FROM student").then((data) => { return data });
+    let data = await connection.execute("SELECT * FROM student").then((data) => { return data });
     res.send(data);
 }
 
 const fun = {
-    getStudentTable: getStudentTable,
     getMarkTable: getMarkTable,
-    getSubjectTable: getSubjectTable,
-    getStudentName: getStudentName,
     getTableData: getTableData
 }
 

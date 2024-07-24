@@ -4,12 +4,12 @@ const connection = require('../model/connection.js');
 const controller = require("../controller/controller.js")
 const fun = require('../controller/function.js')
 
-route.get('/', (req, res) => { controller.getHomePage(req, res) })
+route.get('/', (req, res) => { controller.getHomePage(req, res) });
 
-route.get("/data", async (req, res) => { controller.getInfoStudent(req, res) })
+route.get("/api", async (req, res) => { controller.disPlayData(req, res) });
 
-route.get("/api", async (req, res) => { controller.disPlayData(req, res) })
+route.get("/table", async (req, res) => { controller.displayTable(req, res) });
 
-route.get("/table", async (req, res) => { controller.displayTable(req, res) })
+route.get("/mark", async (req, res) => { controller.displayMark(req, res) });
 
 module.exports = route;
