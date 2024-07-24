@@ -15,12 +15,7 @@ const displayTable = (req, res) => {
     res.sendFile(path.resolve("../fontend/table.html"));
 }
 
-const displayMark = (req, res) => {
-    res.sendFile(path.resolve("../fontend/mark.html"));
-}
-
 const controller = {
-    displayMark: displayMark,
     getHomePage: getHomePage,
     disPlayData: disPlayData,
     displayTable: displayTable

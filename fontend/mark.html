@@ -16,8 +16,6 @@
                     <tr id="myTr">
                         <th>ID</th>
                         <th>Full Name</th>
-                        <th>Address</th>
-                        <th>YOB</th>
                         <th>Subject ID</th>
                         <th>Subject Name</th>
                         <th>TX1</th>
@@ -37,8 +35,8 @@
 
         <script>
             async function sendData() {
-                console.log(await fetch('http://localhost:3000/mark/get_mark_data').then(response => response.json()));
-                let exe = await fetch('http://localhost:3000/mark/get_mark_data').then(response => response.json()).then(data => {
+                console.log(await fetch('http://localhost:3000/table/get_mark_data').then(response => response.json()));
+                let exe = await fetch('http://localhost:3000/table/get_mark_data').then(response => response.json()).then(data => {
                     const tBody = document.getElementById("table-body");
 
                     data.forEach(row => {
@@ -83,32 +81,13 @@
                     })
                 }).catch(error => console.error('Lỗi:', error));
             }
-
             sendData();
         </script>
 
         <div class="btn-container">
-            <form action="/" method="get" class="myForm">
-                <!-- <button type="submit">BACK TO HOMEPAGE</button> -->
-                <button class="button-89" role="button">BACK TO HOMEPAGE</button>
+            <form action="/table" method="get" class="myForm">
+                <button class="button-89" role="button">BACK TO STUDENT LIST</button>
             </form>
-            <button class="bubbly-button">Add new student</button>
-
-            <script>
-                var animateButton = function (e) {
-                    e.preventDefault();
-                    e.target.classList.remove('animate');
-                    e.target.classList.add('animate');
-                    setTimeout(function () {
-                        e.target.classList.remove('animate');
-                    }, 700);
-                };
-
-                var bubblyButtons = document.getElementsByClassName("bubbly-button");
-                for (var i = 0; i < bubblyButtons.length; i++) {
-                    bubblyButtons[i].addEventListener('click', animateButton, false);
-                }
-            </script>
 
         </div>
     </div>

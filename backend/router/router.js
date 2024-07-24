@@ -10,6 +10,4 @@ route.get("/api", async (req, res) => { controller.disPlayData(req, res) });
 
 route.get("/table", async (req, res) => { controller.displayTable(req, res) });
 
-route.get("/mark", async (req, res) => { controller.displayMark(req, res) });
-
 module.exports = route;

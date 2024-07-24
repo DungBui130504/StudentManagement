@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>✨ Student List ✨</title>
     <link rel="stylesheet" href="./style/table.css">
+
+    <style>
+        a {
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body>
@@ -22,9 +28,7 @@
                         <th></th>
                     </tr>
                 </thead>
-                <tbody id="table-body">
-
-                </tbody>
+                <tbody id="table-body"></tbody>
             </table>
         </div>
 
@@ -34,6 +38,7 @@
             async function sendData() {
                 console.log(await fetch('http://localhost:3000/table/get_table_data').then(response => response.json()));
                 let exe = await fetch('http://localhost:3000/table/get_table_data').then(response => response.json()).then(data => {
+
                     const tBody = document.getElementById("table-body");
 
                     data.forEach(row => {
@@ -44,10 +49,33 @@
                                 if (row[key] == null) {
                                     newTd.textContent = "--";
                                 }
+                                else if (key === "name") {
+                                    const newForm = document.createElement("form");
+                                    const newInput = document.createElement("input");
+                                    const a = document.createElement("a");
+                                    a.textContent = row[key];
+
+                                    newInput.type = "hidden";
+                                    newInput.name = "linkText";
+                                    newInput.value = row[key];
+
+                                    newForm.appendChild(newInput);
+                                    newForm.appendChild(a);
+                                    newForm.action = "/table/get_mark_data";
+                                    newForm.method = "POST";
+
+                                    a.addEventListener('click', (event) => {
+                                        console.log("Clicked!!");
+                                        event.preventDefault();
+                                        document.body.appendChild(newForm);
+                                        newForm.submit();
+                                    });
+
+                                    newTd.appendChild(a);
+                                }
                                 else {
                                     newTd.textContent = row[key];
                                 }
-
                                 newTr.appendChild(newTd);
                             }
                         }
