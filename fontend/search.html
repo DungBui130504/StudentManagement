@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ Student List ✨</title>
+    <link rel="stylesheet" href="/style/search.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr id="myTr">
+                        <th>ID</th>
+                        <th>Full Name</th>
+                        <th>Subject ID</th>
+                        <th>Subject Name</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body">
+
+                </tbody>
+            </table>
+        </div>
+
+        <br></br>
+
+        <script>
+            async function loadStudentMark() {
+                const codeTrue = sessionStorage.getItem('code_true');
+                const codeName = sessionStorage.getItem('code_name');
+                const randomCode = sessionStorage.getItem('random_code');
+
+                // console.log(`${codeTrue}, ${codeName}, ${randomCode}`);
+
+                if (codeTrue && codeName && randomCode) {
+                    try {
+                        const response = await fetch('/searching_api', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                codeTrue: codeTrue,
+                                codeName: codeName,
+                                randomCode: randomCode
+                            })
+                        });
+
+                        // Kiểm tra mã phản hồi của HTTP
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! status: ${response.status}`);
+                        }
+
+                        const result = await response.json();
+
+                        const tBody = document.getElementById("table-body");
+                        tBody.innerHTML = '';
+
+                        const newTr = document.createElement("tr");
+                        for (const key in result) {
+                            if (result.hasOwnProperty(key)) {
+                                const newTd = document.createElement("td");
+                                newTd.textContent = result[key] == null ? "--" : result[key];
+                                newTr.appendChild(newTd);
+                            }
+                        }
+
+                        tBody.appendChild(newTr);
+                    } catch (e) {
+                        console.log(e);
+                    }
+                }
+            }
+
+            loadStudentMark();
+
+        </script>
+
+        <div class="btn-container">
+            <form action="/" method="get" class="myForm">
+                <button class="button-89" role="button">BACK TO HOMEPAGE</button>
+            </form>
+
+        </div>
+    </div>
+</body>
+
+</html>

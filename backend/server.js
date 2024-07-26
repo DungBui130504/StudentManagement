@@ -8,6 +8,8 @@ const port = 3000;
 
 const app = express();
 
+app.use(express.json());
+
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname, '../fontend')));

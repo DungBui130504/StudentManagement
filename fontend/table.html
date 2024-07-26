@@ -50,27 +50,15 @@
                                     newTd.textContent = "--";
                                 }
                                 else if (key === "name") {
-                                    const newForm = document.createElement("form");
-                                    const newInput = document.createElement("input");
                                     const a = document.createElement("a");
                                     a.textContent = row[key];
+                                    a.href = "#";
 
-                                    newInput.type = "hidden";
-                                    newInput.name = "linkText";
-                                    newInput.value = row[key];
-
-                                    newForm.appendChild(newInput);
-                                    newForm.appendChild(a);
-                                    newForm.action = "/table/get_mark_data";
-                                    newForm.method = "POST";
-
-                                    a.addEventListener('click', (event) => {
-                                        console.log("Clicked!!");
+                                    a.addEventListener('click', async (event) => {
                                         event.preventDefault();
-                                        document.body.appendChild(newForm);
-                                        newForm.submit();
+                                        sessionStorage.setItem('studentName', row[key]);
+                                        window.location.href = '/table/get_table_data/get_mark_data';
                                     });
-
                                     newTd.appendChild(a);
                                 }
                                 else {

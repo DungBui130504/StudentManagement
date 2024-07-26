@@ -6,19 +6,23 @@ const getHomePage = (req, res) => {
     res.sendFile(path.resolve("../fontend/page.html"));
 }
 
-const disPlayData = (req, res) => {
-    res.sendFile(path.resolve("../fontend/page2.html"));
-
-}
-
 const displayTable = (req, res) => {
     res.sendFile(path.resolve("../fontend/table.html"));
 }
 
+const displayMarkTable = (req, res) => {
+    res.sendFile(path.resolve("../fontend/mark.html"));
+}
+
+const displaySearchTable = (req, res) => {
+    res.sendFile(path.resolve("../fontend/search.html"));
+}
+
 const controller = {
     getHomePage: getHomePage,
-    disPlayData: disPlayData,
-    displayTable: displayTable
+    displayTable: displayTable,
+    displayMarkTable: displayMarkTable,
+    displaySearchTable: displaySearchTable
 }
 
 module.exports = controller

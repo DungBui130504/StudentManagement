@@ -23,13 +23,11 @@
 
     </div>
 
-
-
     <div class="container">
         <h1>STUDENT MANAGEMENT</h1>
         <br><br>
         <div class="signup-form">
-            <form action="/searching_api" method="post">
+            <form id="myForm" action="/table/search" method="get">
                 <p id="code0" style="height: 40px; width: 400px; color: white;"></p>
                 <label for="codename">Enter Student ID</label>
                 <label></label>
@@ -38,7 +36,7 @@
                 <input type="text" name="codename" id="codename" placeholder="Enter student ID here">
                 <input type="text" name="random_code" id="random_code" placeholder="Enter captcha code here">
 
-                <button class="btn">
+                <button class="btn" onclick="sendData()">
                     <span class="btn__inner">
                         <span class="btn__slide"></span>
                         <span class="btn__content">Searching Student</span>
@@ -107,6 +105,17 @@
         });
 
         makeItRain();
+
+        async function sendData() {
+            const myForm = document.getElementById("myForm");
+            const codeTrue = document.getElementById("code_true");
+            const codeName = document.getElementById("codename");
+            const randomCode = document.getElementById("random_code");
+
+            sessionStorage.setItem('code_true', codeTrue.value);
+            sessionStorage.setItem('code_name', codeName.value);
+            sessionStorage.setItem('random_code', randomCode.value);
+        }
     </script>
 </body>
 
