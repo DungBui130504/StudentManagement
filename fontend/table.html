@@ -99,6 +99,18 @@
                         deleteTd.appendChild(deleteBtn);
                         newTr.appendChild(deleteTd);
                         tBody.appendChild(newTr);
+
+                        deleteBtn.addEventListener('click', async () => {
+                            sessionStorage.setItem('IdToDel', row.student_id);
+                            const response = await fetch('/table/del_infor', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({ linkText: sessionStorage.getItem('IdToDel') })
+                            });
+                            window.location.reload();
+                        })
                     })
                 }).catch(error => console.error('Lỗi:', error));
             }

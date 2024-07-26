@@ -65,8 +65,17 @@ api.post("/table/edit_infor", async (req, res) => {
     // console.log(idInput);
     // console.log(IdToEdit);
     const infor = await connection.execute(`Update student set student_id = "${idInput}", name = "${nameInput}", address = "${addressInput}", YOB = "${YOBinput}" where student_id = "${IdToEdit}"`).then((data) => { return data }).catch((e) => { return e });
-    console.log(infor);
+    // console.log(infor);
     res.send(infor);
+});
+
+api.post("/table/del_infor", async (req, res) => {
+    const IdToDel = req.body.linkText;
+    console.log(IdToDel);
+
+    const result = await connection.execute(`delete from student where student_id = "${IdToDel}"`).then((data) => { return data }).catch((e) => { return e });
+    // console.log(result);
+    res.send(result);
 });
 
 module.exports = api;
