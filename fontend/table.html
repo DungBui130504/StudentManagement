@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>✨ Student List ✨</title>
+    <title>Trang Chủ| Danh Sách Sinh Viên</title>
     <link rel="stylesheet" href="./style/table.css">
 
     <style>
@@ -36,7 +36,6 @@
 
         <script>
             async function sendData() {
-                console.log(await fetch('http://localhost:3000/table/get_table_data').then(response => response.json()));
                 let exe = await fetch('http://localhost:3000/table/get_table_data').then(response => response.json()).then(data => {
 
                     const tBody = document.getElementById("table-body");
@@ -67,15 +66,24 @@
                                 newTr.appendChild(newTd);
                             }
                         }
+
                         //Tao button sua
                         const editTd = document.createElement("td");
+                        const editLink = document.createElement("a");
+                        editLink.href = "/table/editInfor";
+                        editLink.textContent = "Edit";
+                        editLink.style.color = "white";
                         //css cho btn
                         const editBtn = document.createElement("button");
                         editBtn.style.padding = "5px";
                         editBtn.style.backgroundColor = "rgb(42%, 35%, 80%)";
-                        editBtn.style.color = "white";
                         editBtn.style.borderColor = "white";
-                        editBtn.innerHTML = "Edit";
+                        editBtn.appendChild(editLink);
+
+                        editLink.addEventListener('click', () => {
+                            sessionStorage.setItem('IdToEdit', row.student_id);
+                        });
+
                         editTd.appendChild(editBtn);
                         newTr.appendChild(editTd);
 

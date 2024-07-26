@@ -48,4 +48,25 @@ api.post("/searching_api", async (req, res) => {
     }
 });
 
+api.post("/table/get_default_infor", async (req, res) => {
+    const IdToEdit = req.body.linkText;
+    // console.log(IdToEdit);
+    const infor = await connection.execute(`select * from student where student_id = "${IdToEdit}"`).then((data) => { return data }).catch((e) => { return e });
+    // console.log(infor);
+    res.send(infor);
+});
+
+api.post("/table/edit_infor", async (req, res) => {
+    const IdToEdit = req.body.linkText;
+    const idInput = req.body.idInput;
+    const nameInput = req.body.nameInput;
+    const addressInput = req.body.addressInput;
+    const YOBinput = req.body.YOBinput;
+    // console.log(idInput);
+    // console.log(IdToEdit);
+    const infor = await connection.execute(`Update student set student_id = "${idInput}", name = "${nameInput}", address = "${addressInput}", YOB = "${YOBinput}" where student_id = "${IdToEdit}"`).then((data) => { return data }).catch((e) => { return e });
+    console.log(infor);
+    res.send(infor);
+});
+
 module.exports = api;

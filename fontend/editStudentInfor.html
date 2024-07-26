@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style/editStudentInfor.css">
+    <title>Trang Chủ| Danh Sách Sinh Viên / Sửa Thông Tin</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Edit Infor Form</h1>
+        <label for="idInput">Student ID</label>
+        <input type="text" id="idInput" class="myInput">
+        <label for="nameInput">Student Full Name</label>
+        <input type="text" id="nameInput" class="myInput">
+        <label for="addressInput">Student Address</label>
+        <input type="text" id="addressInput" class="myInput">
+        <label for="YOBinput">Student Year Of Birth</label>
+        <input type="text" id="YOBinput" class="myInput">
+        <button class="myBtn" onclick="editData()">Submit</button>
+        <form action="/table" method="get">
+            <button class="backBtn">Back To Student List</button>
+        </form>
+    </div>
+
+    <script>
+
+        const idInput = document.getElementById("idInput");
+        const nameInput = document.getElementById("nameInput");
+        const addressInput = document.getElementById("addressInput");
+        const YOBinput = document.getElementById("YOBinput");
+
+        //Lay du lieu ban dau
+        async function getData() {
+            const response = await fetch('/table/get_default_infor', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ linkText: sessionStorage.getItem('IdToEdit') })
+            });
+
+            const result = await response.json();
+            // console.log(result[0].name);
+
+            idInput.value = result[0].student_id;
+            nameInput.value = result[0].name;
+            addressInput.value = result[0].address;
+            YOBinput.value = result[0].YOB;
+        }
+        getData();
+
+        //Gui du lieu sua
+        async function editData() {
+            const response = await fetch('/table/edit_infor', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    linkText: sessionStorage.getItem('IdToEdit'),
+                    idInput: idInput.value,
+                    nameInput: nameInput.value,
+                    addressInput: addressInput.value,
+                    YOBinput: YOBinput.value
+                })
+            });
+            window.alert("Success!!!");
+        }
+
+    </script>
+</body>
+
+</html>

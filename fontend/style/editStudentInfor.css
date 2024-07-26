@@ -1,0 +1,33 @@
+* {
+    margin: 20;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: rgb(69%, 77%, 87%);
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 20px;
+}
+
+.myInput {
+    background-color: white;
+    height: 30px;
+    width: 300px;
+    text-align: center;
+}
+
+.myBtn {
+    background-color: rgb(97%, 56%, 41%);
+    height: 30px;
+    width: 60px;
+}
+
+.backBtn {
+    background-color: rgb(35%, 84%, 79%);
+    height: 30px;
+    width: 140px;
+}
