@@ -1,5 +1,5 @@
 * {
-    margin: 20;
+    margin: 5px;
     padding: 0;
     box-sizing: border-box;
     background-color: rgb(69%, 77%, 87%);
@@ -27,7 +27,7 @@
 }
 
 .backBtn {
-    background-color: rgb(35%, 84%, 79%);
+    background-color: rgb(100%, 94%, 81%);
     height: 30px;
     width: 140px;
 }

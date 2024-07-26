@@ -6,6 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/style/editStudentInfor.css">
     <title>Trang Chủ| Danh Sách Sinh Viên / Sửa Thông Tin</title>
+    <style>
+        #myAlert {
+            display: none;
+            color: rgb(17, 243, 85);
+            background-color: white;
+        }
+    </style>
 </head>
 
 <body>
@@ -23,6 +30,7 @@
         <form action="/table" method="get">
             <button class="backBtn">Back To Student List</button>
         </form>
+        <h2 id="myAlert">Success!!!</h2>
     </div>
 
     <script>
@@ -31,6 +39,7 @@
         const nameInput = document.getElementById("nameInput");
         const addressInput = document.getElementById("addressInput");
         const YOBinput = document.getElementById("YOBinput");
+        const myAlert = document.getElementById("myAlert");
 
         //Lay du lieu ban dau
         async function getData() {
@@ -67,9 +76,8 @@
                     YOBinput: YOBinput.value
                 })
             });
-            window.alert("Success!!!");
+            myAlert.style.display = "block";
         }
-
     </script>
 </body>
 
